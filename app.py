@@ -29,7 +29,6 @@ app = Flask(__name__)
 def yearDataCall():
     year = request.args.get('year', default = 1, type = int)
     resultData = engine.execute("SELECT title FROM movies where year =  "+str(year)).fetchall()
-    # Create a dictionary from the row data and append to a list of all_passengers
     return str(resultData)
 
 @app.route("/api/v1.0/starsData")
@@ -37,7 +36,6 @@ def titleCall():
     title = request.args.get('title', default = 1, type = str)
     print(title)
     resultData = engine.execute("SELECT stars FROM movies where title like  \'"+title+"\'").fetchall()
-    # Create a dictionary from the row data and append to a list of all_passengers
     return str(resultData)
 
 @app.route("/api/v1.0/revenueData")
@@ -45,16 +43,14 @@ def revenueCall():
     title = request.args.get('title', default = 1, type = str)
     print(title)
     resultData = engine.execute("SELECT revenue FROM movies where title like  \'"+title+"\'").fetchall()
-    # Create a dictionary from the row data and append to a list of all_passengers
     return str(resultData)
 
 
-@app.route("/api/v1.0/revenueData")
+@app.route("/api/v1.0/yearData")
 def yearCall():
     title = request.args.get('title', default = 1, type = str)
     print(title)
     resultData = engine.execute("SELECT year FROM movies where title like  \'"+title+"\'").fetchall()
-    # Create a dictionary from the row data and append to a list of all_passengers
     return str(resultData)
 
 @app.route("/api/v1.0/sqlQuery")
@@ -62,7 +58,6 @@ def runAQuery():
     query = request.args.get('query', default = 1, type = str)
     print(query)
     resultData = engine.execute(query).fetchall()
-    # Create a dictionary from the row data and append to a list of all_passengers
     return str(resultData)
 
 if __name__ == '__main__':
